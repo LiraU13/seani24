@@ -14,7 +14,7 @@ class QuestionInline(admin.StackedInline):
 class ModuleAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'num_questions']
     inlines = [QuestionInline]
-
+    
 
 # admin.site.register(Module)
 # admin.site.register(Question, QuestionAdmin)

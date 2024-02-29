@@ -14,11 +14,7 @@ class Module(models.Model):
     def num_questions(self):
         return Question.objects.filter(module=self).count()
     num_questions.short_description = 'Número de preguntas'
-    
-    # def num_questions(self):
-    #     return self.question_text.count()
-    # num_questions.short_description = 'Número de preguntas'
-    
+        
     def __str__(self):
         return self.name
     
@@ -42,8 +38,7 @@ class Question(models.Model):
         verbose_name = 'Imagen de la Pregunta',
         folder = 'questions',
         resource_type = 'image',
-        null = True, blank = True
-    )
+        null = True, blank = True)
     answer1 = models.CharField(
         verbose_name = 'Respuesta A',
         max_length = 200)
@@ -60,10 +55,9 @@ class Question(models.Model):
         verbose_name = 'Respuesta Correcta',
         max_length = 5)
     
-
     def _str_(self):
         return f"{ self.module } - { self.id }"
     
     class Meta:
-        verbose_name = 'pregunta' 
-        verbose_name_plural = 'preguntas' 
+        verbose_name = 'pregunta'
+        verbose_name_plural = 'preguntas'
