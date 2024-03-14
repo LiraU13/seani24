@@ -1,0 +1,32 @@
+<h1> {{ question.module }} </h1>
+<hr>
+{% if question.question_text %}
+<h2>{{ question.question_text }}</h2>
+{% endif %}
+{% if question.question_image %}
+<img src="{{ question.question_image.url }}" alt="" width="500px">
+{% endif %}
+
+<form action="{% url 'exam:question' m_id q_id %}" method="post">
+    {% csrf_token %}
+    <input type="radio" name="answer" id="ans0" value="-">
+    {% if answer == '-' %}checked{% endif%}
+    <label for="ans0">Respuesta Actual</label>
+    <input type="radio" name="answer" id="ans1" value="A">
+    {% if answer == 'A' %}checked{% endif%}
+    <label for="ans1">{{ question.answer1 }}</label>
+    <input type="radio" name="answer" id="ans2" value="B">
+    {% if answer == 'B' %}checked{% endif%}
+    <label for="ans2">{{ question.answer2 }}</label>
+    {% if question.answer3 %}
+    <input type="radio" name="answer" id="ans3" value="C">
+    {% if answer == 'C' %}checked{% endif%}
+    <label for="ans3">{{ question.answer3 }}</label>
+    {% endif %}
+    {% if question.answer4 %}
+    <input type="radio" name="answer" id="ans4" value="">
+    {% if answer == 'D' %}checked{% endif%}
+    <label for="ans4">{{ question.answer4 }}</label>
+    {% endif %}
+    <input type="submit" value="Siguiente">
+</form>

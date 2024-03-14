@@ -81,6 +81,9 @@ class Exam(models.Model):
                     correct = question.correct
                 )
     
+    def __str__(self):
+        return f"{self.user} - {self.career}: {self.score}"
+    
     class Meta:
         verbose_name = 'examen'
         verbose_name_plural = "examenes"
@@ -121,8 +124,8 @@ class Breakdown(models.Model):
         )
     answer = models.CharField(
         verbose_name = 'Respuesta',
-        max_length = 255,
-        default = '-'
+        max_length = 5,
+        default = True
         )
     correct = models.CharField(
         verbose_name = 'Respuesta correcta',
