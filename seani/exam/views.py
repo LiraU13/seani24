@@ -1,18 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-
-from .forms import CandidateForm
 from django.contrib.auth.models import User
 
 from.models import Exam
+from .forms import CandidateForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required
 def home(request):
     user = request.user
+    if user.is_superuser:
+        return redirect('admin:index')
     return render(request, 'exam/home.html', {'user': user})
 
-def question(request, m_id, q_id =1):
+@login_required
+def question(request, m_id, q_id = 1):
     exam = request.user.exam
     if request.method == 'POST':
         answer = request.POST['answer']
@@ -35,7 +38,7 @@ def question(request, m_id, q_id =1):
     except IndexError:
         return redirect('exam:home')
 
-
+@login_required
 def add_candidate(request):
     if request.method == 'POST':
         form = CandidateForm(request.POST)
