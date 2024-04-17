@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w()p+xa1kj3%eg79p6)5qs1lyb^3xo-_)0ol)3f_+mb-tdb!@l'
+SECRET_KEY = 'django-insecure-v)2+478e+gbd@gt^_*&m4$yqofk&y0hm960cdvipm!_&=xua*^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,7 +26,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     # Local Apps
     'library.apps.LibraryConfig',
@@ -82,7 +81,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3306'
+        'PORT': '3306',
     }
 }
 
@@ -130,11 +129,10 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR/ 'media'
 
 LOGIN_REDIRECT_URL = '/exam'
-LOGIN_REDIRECT_URL = '/'
-
+LOGOUT_REDIRECT_URL = '/'
 
 cloudinary.config( 
   cloud_name = str(os.environ.get('CLOUD_NAME')), 

@@ -9,24 +9,30 @@
 
 <form action="{% url 'exam:question' m_id q_id %}" method="post">
     {% csrf_token %}
-    <input type="radio" name="answer" id="ans0" value="-">
-    {% if answer == '-' %}checked{% endif%}
+    <input type="radio" name="answer" id="ans0" value="-" 
+    {% if answer == '-' %}checked{% endif %} style="display: none;">
     <label for="ans0">Respuesta Actual</label>
-    <input type="radio" name="answer" id="ans1" value="A">
-    {% if answer == 'A' %}checked{% endif%}
+    <br>
+    <input type="radio" name="answer" id="ans1" value="A" 
+    {% if answer == 'A' %}checked{% endif%}>
     <label for="ans1">{{ question.answer1 }}</label>
-    <input type="radio" name="answer" id="ans2" value="B">
-    {% if answer == 'B' %}checked{% endif%}
+    <br>
+    <input type="radio" name="answer" id="ans2" value="B" 
+    {% if answer == 'B' %}checked{% endif %}>
     <label for="ans2">{{ question.answer2 }}</label>
+    <br>
     {% if question.answer3 %}
-    <input type="radio" name="answer" id="ans3" value="C">
-    {% if answer == 'C' %}checked{% endif%}
+    <input type="radio" name="answer" id="ans3" value="C"
+    {% if answer == 'C' %}checked{% endif%}>
     <label for="ans3">{{ question.answer3 }}</label>
+    <br>
     {% endif %}
     {% if question.answer4 %}
-    <input type="radio" name="answer" id="ans4" value="">
-    {% if answer == 'D' %}checked{% endif%}
+    <input type="radio" name="answer" id="ans4" value="D" 
+    {% if answer == 'D' %}checked{% endif%}>
     <label for="ans4">{{ question.answer4 }}</label>
+    <br>
     {% endif %}
     <input type="submit" value="Siguiente">
 </form>
+
